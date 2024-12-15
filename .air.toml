@@ -1,0 +1,25 @@
+root = "."
+tmp_dir = "tmp"
+
+[build]
+# แก้ command ให้สร้าง .exe ครั้งเดียว
+cmd = "go build -o ./tmp/main.exe ./cmd/api/main.go"
+# กำหนด bin ให้ตรงกับ output file
+bin = "./tmp/main.exe"
+include_ext = ["go", "tpl", "tmpl", "html"]
+exclude_dir = ["assets", "tmp", "vendor", "tests"]
+
+# สำหรับ Windows ให้ใส่ path แบบนี้
+full_bin = "./tmp/main.exe"
+
+[log]
+time = true
+
+[color]
+main = "yellow"
+watcher = "cyan"
+build = "green"
+runner = "magenta"
+
+[misc]
+clean_on_exit = true
