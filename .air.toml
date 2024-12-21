@@ -1,25 +1,37 @@
 root = "."
+testdata_dir = "testdata"
 tmp_dir = "tmp"
 
 [build]
-# แก้ command ให้สร้าง .exe ครั้งเดียว
-cmd = "go build -o ./tmp/main.exe ./cmd/api/main.go"
-# กำหนด bin ให้ตรงกับ output file
+args_bin = []
 bin = "./tmp/main.exe"
+cmd = "swag init -g cmd/main.go && go build -o ./tmp/main.exe ./cmd/main.go"
+delay = 2000
+exclude_dir = ["assets", "tmp", "vendor", "testdata", "docs"]
+exclude_file = []
+exclude_regex = ["_test.go", "docs.go", "swagger.json", "swagger.yaml"]
+exclude_unchanged = true
+follow_symlink = false
+full_bin = ""
+include_dir = []
 include_ext = ["go", "tpl", "tmpl", "html"]
-exclude_dir = ["assets", "tmp", "vendor", "tests"]
-
-# สำหรับ Windows ให้ใส่ path แบบนี้
-full_bin = "./tmp/main.exe"
-
-[log]
-time = true
+kill_delay = "1s"
+log = "build-errors.log"
+send_interrupt = false
+stop_on_error = true
 
 [color]
-main = "yellow"
+app = ""
+build = "yellow"
+main = "magenta"
+runner = "green"
 watcher = "cyan"
-build = "green"
-runner = "magenta"
+
+[log]
+time = false
 
 [misc]
-clean_on_exit = true
+clean_on_exit = false
+
+[screen]
+clear_on_rebuild = false
